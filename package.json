@@ -1,0 +1,30 @@
+{
+  "name": "s9s-docs",
+  "version": "1.0.0",
+  "description": "Documentation generator",
+  "main": "index.js",
+  "author": "Severalnines AB",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "severalnines",
+    "s9s",
+    "docs",
+    "documentation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/simon-s9/s9s-docs.git"
+  },
+  "bin": {
+    "s9sdocs": "./generate.js"
+  },
+  "dependencies": {
+    "cli": "^0.11.2",
+    "jsdox": "^0.4.9",
+    "promise": "^7.1.1",
+    "s9s-filesystem": "^1.0.0"
+  }
+}

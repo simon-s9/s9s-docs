@@ -14,11 +14,15 @@ const path = require('path');
 const pkg = filesystem.readJson(__dirname + '/package.json');
 
 cli.setApp(pkg.name, pkg.version);
-cli.enable('version');
+cli
+    .enable('version')
+    .enable('status');
 
 cli.parse({
     input: ['i', 'Javascript files to scan', 'file'],
-    output: ['o', 'Path to output the generated docs', 'file']
+    output: ['o', 'Path to output the generated docs', 'file'],
+    recursive: ['r', 'Recursive mode'],
+    index: [null, 'Generate index file', 'string']
 });
 
 cli.main(function (args, options) {
@@ -34,14 +38,22 @@ cli.main(function (args, options) {
         filesystem.createDirectory(options.output);
     }
 
-    options.input = path.resolve(options.input);
-    options.output = path.resolve(options.output);
+    options.recursive = options.recursive === true;
+    options.rr = options.recursive === true;
 
-    docs.generate(options.input, options.output)
+    if (typeof(options.index) !== 'string') {
+        options.index = options.index === true;
+    }
+
+    var msg = 'Generating docs for ' + options.input + ' ...';
+
+    cli.spinner(msg);
+    docs.generate(options)
         .then(function () {
-            cli.info('The docs were generated and saved to ' + options.output);
+            cli.spinner(msg + ' DONE!', true);
         })
         .catch(function (error) {
+            cli.spinner(msg + ' FAILED!', true);
             cli.error(error.message);
         });
 });

@@ -1,6 +1,6 @@
 {
   "name": "s9s-docs",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "Documentation generator",
   "main": "index.js",
   "author": "Severalnines AB",
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "cli": "^0.11.2",
-    "jsdox": "^0.4.9",
     "promise": "^7.1.1",
-    "s9s-filesystem": "^1.0.0"
+    "s9s-filesystem": "^1.0.0",
+    "s9s-jsdox": "^0.4.10"
   }
 }

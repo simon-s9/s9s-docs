@@ -1,6 +1,6 @@
 {
   "name": "s9s-docs",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Documentation generator",
   "main": "index.js",
   "author": "Severalnines AB",
